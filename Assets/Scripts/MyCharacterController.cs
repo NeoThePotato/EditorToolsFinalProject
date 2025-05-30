@@ -23,11 +23,24 @@ public class MyCharacterController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        if (!customSensitivity)
+        {
+            sensitivity = 0.5f;
+        }
     }
 
     void Update()
     {
         //movement controls
+        MovePlayer();
+
+        //camera controls
+        cameraInput = Mouse.current.delta.ReadValue();
+        MoveCamera();
+    }
+
+    private void MovePlayer()
+    {
         isGrounded = controller.isGrounded;
 
         float moveX = Input.GetAxis("Horizontal");
@@ -48,10 +61,6 @@ public class MyCharacterController : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-
-        //camera controls
-        cameraInput = Mouse.current.delta.ReadValue();
-        MoveCamera();
     }
 
     private void MoveCamera()

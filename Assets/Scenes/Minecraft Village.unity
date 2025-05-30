@@ -449,7 +449,7 @@ MonoBehaviour:
   moveSpeed: 5
   canJump: 1
   jumpHeight: 2
-  customSensitivity: 1
+  customSensitivity: 0
   sensitivity: 0.5
 --- !u!1001 &2016326898
 PrefabInstance:
