@@ -7,14 +7,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Camera _camera;
     [SerializeField] private InputAction _moveIA;
     [SerializeField] private InputAction _jumpIA;
-    [SerializeField] private InputAction _cameraIA;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpHeight;
     [SerializeField] private float _sensitivity;
     private Vector3 _moveInput;
     private Vector2 _cameraInput;
-    private float xRotation;
-    private float yRotation;
+    private float _xRotation;
+    private float _yRotation;
 
     private void OnEnable()
     {
@@ -55,10 +54,13 @@ public class PlayerController : MonoBehaviour
 
     private void MoveCamera()
     {
-        xRotation -= _cameraInput.y * _sensitivity;
-        yRotation -= _cameraInput.x * _sensitivity * -1;
+        _xRotation -= _cameraInput.y * _sensitivity;
+        //limit camera from rotating upside down
+        _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
+
+        _yRotation -= _cameraInput.x * _sensitivity * -1;
 
         transform.Rotate(0f, _cameraInput.x * _sensitivity, 0f);
-        _camera.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        _camera.transform.localRotation = Quaternion.Euler(_xRotation, _yRotation, 0f);
     }
 }
