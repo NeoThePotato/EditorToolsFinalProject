@@ -408,6 +408,49 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4656667131527394140, guid: ea214739acc18d14cb10ebf0909adf7a, type: 3}
   m_PrefabInstance: {fileID: 6986045641491996022}
   m_PrefabAsset: {fileID: 0}
+--- !u!143 &1353123970
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353123962}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.9999999
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1353123971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353123962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4fa2650c5cb67b4c9142f20b135639f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 646390107}
+  moveSpeed: 5
+  canJump: 1
+  jumpHeight: 2
+  customSensitivity: 1
+  sensitivity: 0.5
 --- !u!1001 &2016326898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -975,9 +1018,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6140138196187125939, guid: ea214739acc18d14cb10ebf0909adf7a, type: 3}
+      propertyPath: CanJump
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140138196187125939, guid: ea214739acc18d14cb10ebf0909adf7a, type: 3}
       propertyPath: _camera
       value: 
       objectReference: {fileID: 646390107}
+    - target: {fileID: 6140138196187125939, guid: ea214739acc18d14cb10ebf0909adf7a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6140138196187125939, guid: ea214739acc18d14cb10ebf0909adf7a, type: 3}
       propertyPath: _jumpHeight
       value: 5
@@ -1550,10 +1601,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6140138196187125939, guid: ea214739acc18d14cb10ebf0909adf7a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4656667131527394140, guid: ea214739acc18d14cb10ebf0909adf7a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1353123970}
+    - targetCorrespondingSourceObject: {fileID: 4656667131527394140, guid: ea214739acc18d14cb10ebf0909adf7a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1353123971}
   m_SourcePrefab: {fileID: 100100000, guid: ea214739acc18d14cb10ebf0909adf7a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
