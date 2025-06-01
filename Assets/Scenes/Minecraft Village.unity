@@ -644,8 +644,8 @@ MonoBehaviour:
   moveSpeed: 5
   canJump: 1
   jumpHeight: 2
-  customSensitivity: 1
-  sensitivity: 0.5
+  customSensitivity: 0
+  sensitivity: 0.392
 --- !u!1001 &2016326898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1157,11 +1157,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4602422194043453091, guid: 9d0d54fb11a976b4f9948a632abf266a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.65
+      value: 3.5500002
       objectReference: {fileID: 0}
     - target: {fileID: 4602422194043453091, guid: 9d0d54fb11a976b4f9948a632abf266a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -97.93
+      value: -91.63
       objectReference: {fileID: 0}
     - target: {fileID: 4602422194043453091, guid: 9d0d54fb11a976b4f9948a632abf266a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1173,11 +1173,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4602422194043453091, guid: 9d0d54fb11a976b4f9948a632abf266a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4602422194043453091, guid: 9d0d54fb11a976b4f9948a632abf266a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4602422194043453091, guid: 9d0d54fb11a976b4f9948a632abf266a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1766,7 +1766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8700489169422326465, guid: ea214739acc18d14cb10ebf0909adf7a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -94.93
+      value: 53.1
       objectReference: {fileID: 0}
     - target: {fileID: 8700489169422326465, guid: ea214739acc18d14cb10ebf0909adf7a, type: 3}
       propertyPath: m_LocalRotation.w

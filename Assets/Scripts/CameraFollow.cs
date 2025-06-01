@@ -16,14 +16,10 @@ public class CameraFollow : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Vector3 targetPos = cameraTarget.transform.position;
-        //transform.position = new Vector3(targetPos.x, targetPos.y + 0.6f, targetPos.z);
 
-        //Third person camera attempt, did not work
-        transform.position = targetPos + cameraTarget.transform.forward * -3f;
-        transform.position = new Vector3(transform.position.x, targetPos.y + 1.7f, transform.position.z);
-        transform.LookAt(targetPos + cameraTarget.transform.forward * 5f);
+        transform.position = new Vector3(targetPos.x, targetPos.y + 0.6f, targetPos.z);
     }
 }
