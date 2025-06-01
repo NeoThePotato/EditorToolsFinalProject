@@ -1,14 +1,16 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class MyCharacterController : MonoBehaviour
 {
-    public Camera camera;
+    public Camera cam;
 
     public float moveSpeed = 5f;
     public bool canJump = true;
     public float jumpHeight = 2f;
     public bool customSensitivity = true;
+    [Range(0.1f, 1f)]
     public float sensitivity = 0.5f;
 
     private CharacterController controller;
@@ -20,7 +22,7 @@ public class MyCharacterController : MonoBehaviour
     private float xRotation;
     private float yRotation;
 
-    void Start()
+    private void Start()
     {
         controller = GetComponent<CharacterController>();
         if (!customSensitivity)
@@ -29,7 +31,7 @@ public class MyCharacterController : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         //movement controls
         MovePlayer();
@@ -72,6 +74,6 @@ public class MyCharacterController : MonoBehaviour
         yRotation -= cameraInput.x * sensitivity * -1;
 
         transform.Rotate(0f, cameraInput.x * sensitivity, 0f);
-        camera.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        cam.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
     }
 }
