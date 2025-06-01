@@ -22,7 +22,11 @@ public class UIManagerEditor : Editor
         {
             EditorGUILayout.HelpBox("UI by that name was not found.", MessageType.Error);
         }
+        else if (uiObject != null)
+        {
+            EditorGUILayout.PropertyField(uiObject);
+        }
 
-        serializedObject.ApplyModifiedProperties();
+            serializedObject.ApplyModifiedProperties();
     }
 }
