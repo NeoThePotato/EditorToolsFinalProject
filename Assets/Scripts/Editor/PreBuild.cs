@@ -21,7 +21,7 @@ public class PreBuild : IPreprocessBuildWithReport
 
         if ( resetersAmount<= 3)
         {
-            EditorUtility.DisplayDialog("Build Warning", $"Too little resets! you only have {resetersAmount} of them!", "Continue Anyway", "I need to reset");
+            EditorUtility.DisplayDialog("Build Warning", $"Too little resets! you only have {resetersAmount} of them!", "Roger that!");
         }
     }
 }

@@ -1,21 +1,23 @@
 using UnityEngine;
 
-public class DemiActor : MonoBehaviour, IResteable
+public class DemiActor : MonoBehaviour, IResteable, IValidateable
 {
+    public bool IsValidated { get ; set; }
+
     public void Reset()
     {
         transform.position = Vector3.zero;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    
+    private void OnValidate()
     {
-        
+        ValidateScript();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ValidateScript()
     {
-        
+        IsValidated = true;
     }
 }
