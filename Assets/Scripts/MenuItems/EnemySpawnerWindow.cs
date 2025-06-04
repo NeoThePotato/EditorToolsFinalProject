@@ -75,7 +75,8 @@ public class EnemySpawnerWindow: EditorWindow
     private void SpawnEnemyAt()
     {
         GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(enemyPrefab);
-        enemyList.Add(instance);
+        Debug.Log(instance.name);
+       
         float randomX = UnityEngine.Random.Range(-fromX, fromX);
         float randomY = UnityEngine.Random.Range(-toY, toY);
         Vector3 origin = new Vector3(randomX, 100, randomY);
@@ -88,6 +89,7 @@ public class EnemySpawnerWindow: EditorWindow
         {
             Debug.Log("Raycast didn't hit the ground, your bounding box may be too big.");
         }
+        enemyList.Add(instance);
     }
 
     private GameObject FindPrefabByName(string prefabName)
@@ -112,6 +114,8 @@ public class EnemySpawnerWindow: EditorWindow
     {
         foreach(GameObject enemy in enemyList)
         {
+
+            Debug.Log(enemy.name);
             DestroyImmediate(enemy);
         }
         enemyList.Clear();
