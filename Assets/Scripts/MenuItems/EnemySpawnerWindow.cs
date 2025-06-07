@@ -2,16 +2,17 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class EnemySpawnerWindow: EditorWindow
+public class EnemySpawnerWindow : EditorWindow
 {
+    private const string ENEMY_TAG = "Enemy";
+
     private int fromX;
     private int toY;
 
     private string prefabToLookFor = "";
     private GameObject enemyPrefab;
-
-    private List<GameObject> enemyList;
 
     [MenuItem("Tools/Enemy Spawner")]
     public static void ShowWindow()
@@ -75,7 +76,6 @@ public class EnemySpawnerWindow: EditorWindow
     private void SpawnEnemyAt()
     {
         GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(enemyPrefab);
-        enemyList.Add(instance);
         float randomX = UnityEngine.Random.Range(-fromX, fromX);
         float randomY = UnityEngine.Random.Range(-toY, toY);
         Vector3 origin = new Vector3(randomX, 100, randomY);
@@ -108,14 +108,10 @@ public class EnemySpawnerWindow: EditorWindow
         return null;
     }
 
-    private void DestroyEnemies()
+	[MenuItem("Tools/Destroy All Enemies")]
+	public static void DestroyEnemies()
     {
-        foreach(GameObject enemy in enemyList)
-        {
-
-            //Debug.Log(enemy.name);
+        foreach(var enemy in GameObject.FindGameObjectsWithTag(ENEMY_TAG))
             DestroyImmediate(enemy);
-        }
-        enemyList.Clear();
     }
 }
