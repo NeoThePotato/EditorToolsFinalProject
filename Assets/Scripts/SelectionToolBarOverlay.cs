@@ -3,52 +3,38 @@ using UnityEditor.Overlays;
 using UnityEditor.Toolbars;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [Overlay(typeof(SceneView), "Select By Tag")]
 [Icon("Assets/Textures/EnviromentSelectionIcon")]
 public class SelectionToolBarOverlay : ToolbarOverlay
 {
-    public SelectionToolBarOverlay() : base("custom-toolbar/environmentSelector", "custom-toolbar/customTagSelector")
-    {
-    }
+    public override VisualElement CreatePanelContent()
+	{
+        var content = base.CreatePanelContent();
+
+		foreach (var tag in InternalEditorUtility.tags)
+            content.Add(new TagSelectionButton(tag));
+
+		return content;
+	}
 }
 
-[EditorToolbarElement("custom-toolbar/environmentSelector", typeof(SceneView))]
-public class EnviroumentSelectionButton : EditorToolbarButton
+[EditorToolbarElement("custom-toolbar/tagSelector", typeof(SceneView))]
+public class TagSelectionButton : EditorToolbarButton
 {
-    public EnviroumentSelectionButton()
+    public string tag;
+
+    public TagSelectionButton(string tag)
     {
-        text = "Select All Environments";
-        tooltip = "Press to select all gameobjects in scene with the tag 'Environment' ";
+        this.tag = tag;
+        text = $"Select All \'{tag}\'";
+        tooltip = $"Press to select all GameObjects in scene with the tag \'{tag}\'";
         clicked += () =>
         {
-            GameObject[] environmentsObjects = GameObject.FindGameObjectsWithTag("environment");
+            GameObject[] environmentsObjects = GameObject.FindGameObjectsWithTag(tag);
 
             Selection.objects = environmentsObjects;
         };
     }
 }
-
-//[EditorToolbarElement("custom-toolbar/customTagSelector", typeof(SceneView))]
-//public class CustomButton2 : EditorToolbarFloatField
-//{
-//    public CustomButton2()
-//    {
-//        text = "Custom tag selector";
-//        tooltip = "Enter the index of the wanted tag to select all objects in this tag";
-
-      
-        
-       
-        
-
-
-//    }
-
-//    public void SelectAllCustom()
-//    {
-//        GameObject[] environmentsObjects = GameObject.FindGameObjectsWithTag(InternalEditorUtility.tags[int.Parse(textSelection.ToString())]);
-
-//        Selection.objects = environmentsObjects;
-//    }
-//}
