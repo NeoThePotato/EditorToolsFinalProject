@@ -49,8 +49,6 @@ public class UIManager : MonoBehaviour
                 return prefab;
             }
         }
-
-        Debug.LogWarning($"Prefab named '{prefabName}' not found in Assets/Prefabs/UI.");
         return null;
     }
 

@@ -27,6 +27,6 @@ public class UIManagerEditor : Editor
             EditorGUILayout.PropertyField(uiObject);
         }
 
-            serializedObject.ApplyModifiedProperties();
+        serializedObject.ApplyModifiedProperties();
     }
 }

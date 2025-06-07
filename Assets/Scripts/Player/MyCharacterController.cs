@@ -2,14 +2,14 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MyCharacterController : MonoBehaviour
+public class MyCharacterController : MonoBehaviour, IResteable
 {
     public Camera cam;
 
     public float moveSpeed = 5f;
     public bool canJump = true;
     public float jumpHeight = 2f;
-    public bool customSensitivity = true;
+    public bool customSensitivity = false;
     [Range(0.1f, 1f)]
     public float sensitivity = 0.5f;
 
@@ -75,5 +75,14 @@ public class MyCharacterController : MonoBehaviour
 
         transform.Rotate(0f, cameraInput.x * sensitivity, 0f);
         cam.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+    }
+
+    public void Reset()
+    {
+        moveSpeed = 5f;
+        canJump = true;
+        jumpHeight = 2f;
+        customSensitivity = false;
+        sensitivity = 0.5f;
     }
 }
