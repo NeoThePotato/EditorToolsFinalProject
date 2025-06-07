@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DemiActor : MonoBehaviour, IResteable, IValidateable
+public class DemiActor : MonoBehaviour, IReseteable, IValidateable
 {
     public bool IsValidated { get ; set; }
 

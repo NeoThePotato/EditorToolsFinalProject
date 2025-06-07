@@ -1,8 +1,8 @@
+using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
-using System.Linq;
 
 public class PreBuild : IPreprocessBuildWithReport
 {
@@ -10,9 +10,9 @@ public class PreBuild : IPreprocessBuildWithReport
 
     public void OnPreprocessBuild(BuildReport report)
     {
-        var reseteables = GameObject.FindObjectsOfType<MonoBehaviour>().OfType<IResteable>();
+        var reseteables = GameObject.FindObjectsByType<Component>(FindObjectsSortMode.None).OfType<IReseteable>();
 
-        foreach(IResteable resetable in reseteables)
+        foreach(IReseteable resetable in reseteables)
         {
             resetable.Reset();
         }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IResteable
+public interface IReseteable
 {
     [ContextMenu("Reset")]
     public void Reset();

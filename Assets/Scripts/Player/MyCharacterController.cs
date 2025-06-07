@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MyCharacterController : MonoBehaviour, IResteable
+public class MyCharacterController : MonoBehaviour, IReseteable
 {
     public Camera cam;
 
