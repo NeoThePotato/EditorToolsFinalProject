@@ -78,6 +78,7 @@ public class EnemySpawnerWindow : EditorWindow
         GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(enemyPrefab);
         float randomX = UnityEngine.Random.Range(-fromX, fromX);
         float randomY = UnityEngine.Random.Range(-toY, toY);
+        Debug.LogWarning(randomX+","+randomY);
         Vector3 origin = new Vector3(randomX, 100, randomY);
         
         if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("PlaneBlock")))
@@ -87,6 +88,7 @@ public class EnemySpawnerWindow : EditorWindow
         else
         {
             Debug.Log("Raycast didn't hit the ground, your bounding box may be too big.");
+            
         }
     }
 
