@@ -4,7 +4,8 @@ using UnityEditor.Toolbars;
 using UnityEditorInternal;
 using UnityEngine;
 
-[Overlay(typeof(SceneView), "Custom Toolbar Overlay")]
+[Overlay(typeof(SceneView), "Select By Tag")]
+[Icon("Assets/Textures/EnviromentSelectionIcon")]
 public class SelectionToolBarOverlay : ToolbarOverlay
 {
     public SelectionToolBarOverlay() : base("custom-toolbar/environmentSelector", "custom-toolbar/customTagSelector")
@@ -28,21 +29,26 @@ public class EnviroumentSelectionButton : EditorToolbarButton
     }
 }
 
-[EditorToolbarElement("custom-toolbar/customTagSelector", typeof(SceneView))]
-public class CustomButton2 : EditorToolbarFloatField
-{
-    public CustomButton2()
-    {
-        text = "Custom tag selector";
-        tooltip = "Enter the index of the wanted tag to select all objects in this tag";
+//[EditorToolbarElement("custom-toolbar/customTagSelector", typeof(SceneView))]
+//public class CustomButton2 : EditorToolbarFloatField
+//{
+//    public CustomButton2()
+//    {
+//        text = "Custom tag selector";
+//        tooltip = "Enter the index of the wanted tag to select all objects in this tag";
+
+      
+        
+       
         
 
 
-        GameObject[] environmentsObjects = GameObject.FindGameObjectsWithTag(InternalEditorUtility.tags[int.Parse(textSelection.ToString())]);
+//    }
 
-        Selection.objects = environmentsObjects;
-        
+//    public void SelectAllCustom()
+//    {
+//        GameObject[] environmentsObjects = GameObject.FindGameObjectsWithTag(InternalEditorUtility.tags[int.Parse(textSelection.ToString())]);
 
-
-    }
-}
+//        Selection.objects = environmentsObjects;
+//    }
+//}
