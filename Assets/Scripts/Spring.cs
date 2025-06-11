@@ -74,26 +74,4 @@ public static class SpringExtensions
 		velocity = math.clamp(velocity, -Extensions.Math.DEGREES, Extensions.Math.DEGREES);
 		Spring.Apply(ref currentDegrees, ref velocity, in parameters, deltaTime);
 	}
-
-	[BurstCompile]
-	public static void ApplyCircular(ref float currentDegrees, ref Spring1 spring, float deltaTime) => ApplyCircular(ref currentDegrees, ref spring.velocity, in spring.parameters, deltaTime);
-
-	[Serializable]
-	public struct Spring1
-	{
-		public Parameters parameters;
-		[NonSerialized] public float velocity;
-
-		public Spring1(in Parameters parameters, float velocity)
-		{
-			this.parameters = parameters;
-			this.velocity = velocity;
-		}
-
-		public Spring1(in Parameters parameters)
-		{
-			this.parameters = parameters;
-			velocity = default;
-		}
-	}
 }
