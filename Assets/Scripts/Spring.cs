@@ -11,11 +11,39 @@ public static class Spring
 	[BurstCompile]
 	public static void Apply(ref float current, ref float velocity, in Parameters parameters, float deltaTime)
 	{
-		float distance = current - parameters.destination;
-		float loss = parameters.damping * velocity;
+		var distance = current - parameters.destination;
+		var loss = parameters.damping * velocity;
+		var force = -parameters.rigidness * distance - loss;
+		velocity += force;
+		current += velocity * deltaTime;
+	}
 
-		// Hooke's Law
-		float force = -parameters.rigidness * distance - loss;
+	[BurstCompile]
+	public static void Apply(ref float2 current, ref float2 velocity, in Parameters parameters, float deltaTime)
+	{
+		var distance = current - parameters.destination;
+		var loss = parameters.damping * velocity;
+		var force = -parameters.rigidness * distance - loss;
+		velocity += force;
+		current += velocity * deltaTime;
+	}
+
+	[BurstCompile]
+	public static void Apply(ref float3 current, ref float3 velocity, in Parameters parameters, float deltaTime)
+	{
+		var distance = current - parameters.destination;
+		var loss = parameters.damping * velocity;
+		var force = -parameters.rigidness * distance - loss;
+		velocity += force;
+		current += velocity * deltaTime;
+	}
+
+	[BurstCompile]
+	public static void Apply(ref float4 current, ref float4 velocity, in Parameters parameters, float deltaTime)
+	{
+		var distance = current - parameters.destination;
+		var loss = parameters.damping * velocity;
+		var force = -parameters.rigidness * distance - loss;
 		velocity += force;
 		current += velocity * deltaTime;
 	}
