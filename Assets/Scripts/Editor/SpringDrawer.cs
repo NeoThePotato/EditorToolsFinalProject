@@ -73,8 +73,9 @@ public class SpringDrawer : PropertyDrawer, IDisposable
 
 	public void Dispose()
 	{
-		springTexture.Release();
-		cmd.Dispose();
+		if (springTexture)
+			springTexture.Release();
+		cmd?.Dispose();
 	}
 
 	private void SpringChanged(SerializedPropertyChangeEvent evt)

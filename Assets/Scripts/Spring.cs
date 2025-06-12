@@ -9,13 +9,41 @@ using static Spring;
 public static class Spring
 {
 	[BurstCompile]
-	public static void Apply(ref float current, ref float velocity, in Parameters parameters, float deltaTime)
+	public static void Apply(ref float current, ref float velocity, float destination, in Parameters parameters, float deltaTime)
 	{
-		float distance = current - parameters.destination;
-		float loss = parameters.damping * velocity;
+		var distance = current - destination;
+		var loss = parameters.damping * velocity;
+		var force = -parameters.rigidness * distance - loss;
+		velocity += force;
+		current += velocity * deltaTime;
+	}
 
-		// Hooke's Law
-		float force = -parameters.rigidness * distance - loss;
+	[BurstCompile]
+	public static void Apply(ref float2 current, ref float2 velocity, in float2 destination, in Parameters parameters, float deltaTime)
+	{
+		var distance = current - destination;
+		var loss = parameters.damping * velocity;
+		var force = -parameters.rigidness * distance - loss;
+		velocity += force;
+		current += velocity * deltaTime;
+	}
+
+	[BurstCompile]
+	public static void Apply(ref float3 current, ref float3 velocity, in float3 destination, in Parameters parameters, float deltaTime)
+	{
+		var distance = current - destination;
+		var loss = parameters.damping * velocity;
+		var force = -parameters.rigidness * distance - loss;
+		velocity += force;
+		current += velocity * deltaTime;
+	}
+
+	[BurstCompile]
+	public static void Apply(ref float4 current, ref float4 velocity, in float4 destination, in Parameters parameters, float deltaTime)
+	{
+		var distance = current - destination;
+		var loss = parameters.damping * velocity;
+		var force = -parameters.rigidness * distance - loss;
 		velocity += force;
 		current += velocity * deltaTime;
 	}
@@ -25,13 +53,11 @@ public static class Spring
 	{
 		public float rigidness;
 		[Range(0f, 1f)] public float damping;
-		[NonSerialized] public float destination;
 
-		public Parameters(float destination, float rigidness = 0.1f, float damping = 0.2f)
+		public Parameters(float rigidness = 0.1f, float damping = 0.2f)
 		{
 			this.rigidness = rigidness;
 			this.damping = damping;
-			this.destination = destination;
 		}
 	}
 }
@@ -40,32 +66,10 @@ public static class Spring
 public static class SpringExtensions
 {
 	[BurstCompile]
-	public static void ApplyCircular(ref float currentDegrees, ref  float velocity, in Parameters parameters, float deltaTime)
+	public static void ApplyCircular(ref float currentDegrees, ref float velocity, in float destination, in Parameters parameters, float deltaTime)
 	{
-		currentDegrees = parameters.destination.GetClosestAngle(currentDegrees);
+		currentDegrees = destination.GetClosestAngle(currentDegrees);
 		velocity = math.clamp(velocity, -Extensions.Math.DEGREES, Extensions.Math.DEGREES);
-		Spring.Apply(ref currentDegrees, ref velocity, in parameters, deltaTime);
-	}
-
-	[BurstCompile]
-	public static void ApplyCircular(ref float currentDegrees, ref Spring1 spring, float deltaTime) => ApplyCircular(ref currentDegrees, ref spring.velocity, in spring.parameters, deltaTime);
-
-	[Serializable]
-	public struct Spring1
-	{
-		public Parameters parameters;
-		[NonSerialized] public float velocity;
-
-		public Spring1(in Parameters parameters, float velocity)
-		{
-			this.parameters = parameters;
-			this.velocity = velocity;
-		}
-
-		public Spring1(in Parameters parameters)
-		{
-			this.parameters = parameters;
-			velocity = default;
-		}
+		Spring.Apply(ref currentDegrees, ref velocity, destination, in parameters, deltaTime);
 	}
 }
