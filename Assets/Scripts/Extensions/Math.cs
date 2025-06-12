@@ -110,6 +110,9 @@ namespace Extensions
 			return math.round(angleInDegrees * INV_DEGREES) * DEGREES;
 		}
 
+		/// <returns>The delta between <paramref name="degrees1"/> and <paramref name="degrees2"/>.</returns>
+		public static float AngleDelta(float degrees1, float degrees2) => GetClosestAngle(degrees2, degrees1) - degrees2;
+
 		/// <summary>
 		/// Forces <paramref name="angleInDegrees"/> to a positive (0 to 360) angle.
 		/// </summary>

@@ -66,7 +66,7 @@ public static class Spring
 public static class SpringExtensions
 {
 	[BurstCompile]
-	public static void ApplyCircular(ref float currentDegrees, ref  float velocity, in float destination, in Parameters parameters, float deltaTime)
+	public static void ApplyCircular(ref float currentDegrees, ref float velocity, in float destination, in Parameters parameters, float deltaTime)
 	{
 		currentDegrees = destination.GetClosestAngle(currentDegrees);
 		velocity = math.clamp(velocity, -Extensions.Math.DEGREES, Extensions.Math.DEGREES);
