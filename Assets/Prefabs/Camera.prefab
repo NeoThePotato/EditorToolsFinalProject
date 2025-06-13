@@ -69,7 +69,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 75
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraSkew:
     spring:
-      rigidness: 0.24
-      damping: 0.026
+      rigidness: 3.2
+      damping: 0.022
     sensitivity: 0.1
   _camera: {fileID: 4602606405627378246}
